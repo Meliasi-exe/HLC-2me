@@ -1,15 +1,6 @@
+"""Diccionario llamado inventario tiene que estar creado para su funcionamiento"""
 
-"""Version del trabajo en clase del dia 29 de octubre, pero con excepciones"""
-
-# Importación de librerías:
-from os import system
-
-# Declaración de variables:
-inventario = {} # Diccionario que contendrá toda la estructura.
-
-# Definición de funciones:
-
-def agregarProducto(): #1
+def agregarProducto(inventario): #1
     nombre = input("¿Qué producto quieres añadir al inventario? ")
     nombre =  nombre.capitalize() # Para evitar duplicados por mayúsculas.
     if nombre in inventario:
@@ -30,7 +21,7 @@ def agregarProducto(): #1
         print("")
         input("Pulsa una tecla para continuar...")
 
-def buscarProducto(): #2
+def buscarProducto(inventario): #2
     nombre = input("¿De que producto quieres ver detalles? ")
     nombre =  nombre.capitalize() # Para evitar duplicados por mayúsculas.
     if nombre not in inventario:
@@ -41,7 +32,7 @@ def buscarProducto(): #2
         print(f"Producto: {nombre}, Cantidad: {inventario[nombre]["cantidad"]}, Precio: {inventario[nombre]["precio"]}")
         input("Pulsa una tecla para continuar...")
 
-def listadoProductos(): #5
+def listadoProductos(inventario): #5
     print("Listado de los elementos...")
     for nombre, valor in inventario.items(): # Recorro todo el diccionario principal.
         print(f"Producto: {nombre}, Precio: {valor["precio"]}, Cantidad: {valor["cantidad"]}.")
@@ -49,7 +40,7 @@ def listadoProductos(): #5
     print("")
     input("Pulsa una tecla para continuar...")     
 
-def eliminarProducto(): #4
+def eliminarProducto(inventario): #4
     nombre = input("¿Qué producto quieres eliminar del inventario? ")
     nombre =  nombre.capitalize() # Para evitar duplicados por mayúsculas.
     if nombre not in inventario:
@@ -60,7 +51,7 @@ def eliminarProducto(): #4
         del[inventario[nombre]]
         input(f"{nombre} fue eliminado. Pulsa una tecla para continuar...")
 
-def actualizarCantidad(): #3
+def actualizarCantidad(inventario): #3
     nombre = input("¿De qué producto quieres modificar el stock? ")
     nombre =  nombre.capitalize() # Para evitar duplicados por mayúsculas.
     if nombre not in inventario:
@@ -80,42 +71,3 @@ def actualizarCantidad(): #3
         print("")
         input("Pulsa una tecla para continuar...")
 
-def menu(): #Menu principal con "Todo"
-    opcion = 0
-    while opcion != 6:
-        system("cls")
-        print("") # Salto de línea para dejar una línea en blanco.
-        print("***************   MENÚ PRINCIPAL  ****************")
-        print("1.- Agregar un producto al inventario.")
-        print("2.- Buscar un producto en el inventario.")
-        print("3.- Actualizar la cantidad de un producto del inventario.")
-        print("4.- Eliminar un producto al inventario.")
-        print("5.- Mostar todos los productos del inventario.")
-        print("6.- Salir del programa")
-        print("")
-
-        try:
-            opcion = int(input("Elige la opción correspondiente... "))
-        except ValueError:
-            continue #se vuelve al principio del bucle.
-
-        if opcion == 1: # Agregar un producto al inventario.
-            agregarProducto()
-
-        elif opcion == 2: # Buscar un producto en el inventario..
-           buscarProducto()
-        
-        elif opcion == 3: #  Actualizar la cantidad de un producto del inventario.
-            actualizarCantidad()
-
-        elif opcion == 4: #  Eliminar un producto al inventario.
-            eliminarProducto()
-
-        elif opcion == 5: #  Mostar todos los productos del inventario..
-            listadoProductos()
-
-# Programa principal:
-
-menu()
-
-#Carlos Jose Carrillo Aguayo.
