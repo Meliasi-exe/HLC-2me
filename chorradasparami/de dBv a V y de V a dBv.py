@@ -28,6 +28,6 @@ elif modo == "2":
 
             break
 
-        result = float(20*math.log10(unidad )) #me falta aqui hacer el 20*log(V)
+        result = float(20*math.log10(unidad )) 
 
         print(f"{unidad}V son {result}dBv")
